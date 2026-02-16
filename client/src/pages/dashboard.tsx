@@ -14,6 +14,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/status-badge";
 import { format } from "date-fns";
+import { NearWallet } from "@/components/near-wallet";
+import { AiAssistant } from "@/components/ai-assistant";
 
 const mockChartData = [
   { name: 'Jan', amount: 4000 },
@@ -35,18 +37,21 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="flex flex-col space-y-8">
+      <div className="flex flex-col space-y-8 pb-20">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
             <p className="text-muted-foreground mt-1">Welcome back, {user?.firstName || 'User'}. Here's your financial overview.</p>
           </div>
-          <Link href="/create-invoice">
-            <Button size="lg" className="bg-primary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
-              Create New Invoice
-            </Button>
-          </Link>
+          <div className="flex items-center gap-3">
+            <NearWallet />
+            <Link href="/create-invoice">
+              <Button size="lg" className="bg-primary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
+                Create New Invoice
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Stats Grid */}
@@ -174,6 +179,7 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
+      <AiAssistant />
     </Layout>
   );
 }
